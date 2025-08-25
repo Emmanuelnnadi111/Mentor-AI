@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -20,6 +21,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const menuItems = [
+    {
+      href: '/',
+      label: 'Home',
+      icon: Home,
+    },
     {
       href: '/dashboard',
       label: 'Dashboard',
@@ -76,7 +82,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
              <SidebarTrigger className="md:hidden" />
              <div className="flex-1">
                 <h1 className="text-xl font-semibold">
-                  {menuItems.find(item => pathname.startsWith(item.href))?.label || 'MentorAI'}
+                  {menuItems.find(item => item.href !== '/' && pathname.startsWith(item.href))?.label || 'MentorAI'}
                 </h1>
               </div>
           </header>
