@@ -3,8 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Milestone, Sparkles, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { generateImage } from '@/ai/flows/generate-image';
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const { imageUrl } = await generateImage({ prompt: 'robot learning' });
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -49,7 +52,7 @@ export default function LandingPage() {
               </div>
               <Image
                 data-ai-hint="robot learning"
-                src="https://placehold.co/600x400.png"
+                src={imageUrl}
                 width="600"
                 height="400"
                 alt="Hero"
