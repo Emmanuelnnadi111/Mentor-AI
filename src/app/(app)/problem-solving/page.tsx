@@ -12,6 +12,7 @@ import { SubmitButton } from '@/components/submit-button';
 import { MarkdownResponse } from '@/components/markdown-response';
 import { Terminal, Bot, User, Milestone } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
 
 type Step = {
   type: 'user' | 'bot';
