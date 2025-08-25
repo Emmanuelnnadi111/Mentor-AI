@@ -6,22 +6,26 @@ import Link from 'next/link';
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center bg-background shadow-sm">
-        <Link href="/" className="flex items-center justify-center">
-          <BrainCircuit className="h-6 w-6" />
-          <span className="ml-2 text-lg font-semibold">MentorAI</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            href="/dashboard"
-            className="text-sm font-medium hover:underline underline-offset-4"
-          >
-            Features
+      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <BrainCircuit className="h-6 w-6" />
+            <span className="font-bold sm:inline-block">
+              MentorAI
+            </span>
           </Link>
-          <Button asChild>
-            <Link href="/dashboard">Get Started</Link>
-          </Button>
-        </nav>
+          <nav className="flex flex-1 items-center space-x-4 sm:justify-end">
+            <Link
+              href="/dashboard"
+              className="hidden font-medium text-foreground/60 transition-colors hover:text-foreground/80 sm:block"
+            >
+              Dashboard
+            </Link>
+            <Button asChild size="sm">
+              <Link href="/dashboard">Get Started</Link>
+            </Button>
+          </nav>
+        </div>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary text-primary-foreground">
