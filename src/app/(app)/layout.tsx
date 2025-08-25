@@ -13,9 +13,8 @@ import {
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Lightbulb, Milestone, Sparkles, PanelLeft } from 'lucide-react';
+import { Home, Lightbulb, Milestone, Sparkles } from 'lucide-react';
 import { Logo } from '@/components/logo';
-import { Button } from '@/components/ui/button';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -23,6 +22,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const menuItems = [
     {
       href: '/',
+      label: 'Home',
+      icon: Home,
+    },
+    {
+      href: '/explanations',
       label: 'Adaptive Explanations',
       icon: Lightbulb,
     },
