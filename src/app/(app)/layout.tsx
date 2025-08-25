@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Lightbulb, Milestone, Sparkles } from 'lucide-react';
+import { Home, Lightbulb, Milestone, Sparkles, LayoutDashboard } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -21,9 +21,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   const menuItems = [
     {
-      href: '/',
-      label: 'Home',
-      icon: Home,
+      href: '/dashboard',
+      label: 'Dashboard',
+      icon: LayoutDashboard,
     },
     {
       href: '/explanations',
@@ -76,7 +76,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
              <SidebarTrigger className="md:hidden" />
              <div className="flex-1">
                 <h1 className="text-xl font-semibold">
-                  {menuItems.find(item => item.href === pathname)?.label || 'MentorAI'}
+                  {menuItems.find(item => pathname.startsWith(item.href))?.label || 'MentorAI'}
                 </h1>
               </div>
           </header>
