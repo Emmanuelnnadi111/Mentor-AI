@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Milestone, Sparkles, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LandingPage() {
   return (
@@ -46,8 +47,8 @@ export default function LandingPage() {
                   </Button>
                 </div>
               </div>
-              <img
-                data-ai-hint="AI learning"
+              <Image
+                data-ai-hint="robot learning"
                 src="https://placehold.co/600x400.png"
                 width="600"
                 height="400"
