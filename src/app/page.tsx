@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { generateImage } from '@/ai/flows/generate-image';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LandingPage() {
   const { imageUrl } = await generateImage({ prompt: 'robot learning' });
 
