@@ -1,15 +1,43 @@
+
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Milestone, Sparkles, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { generateImage } from '@/ai/flows/generate-image';
+import { Skeleton } from '@/components/ui/skeleton';
 
-export const dynamic = 'force-dynamic';
+function HeroImage() {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-export default async function LandingPage() {
-  const { imageUrl } = await generateImage({ prompt: 'robot learning' });
+  useEffect(() => {
+    generateImage({ prompt: 'robot learning' })
+      .then(response => setImageUrl(response.imageUrl))
+      .catch(console.error);
+  }, []);
 
+  if (!imageUrl) {
+    return <Skeleton className="mx-auto aspect-video w-full overflow-hidden rounded-xl object-cover sm:w-full lg:order-last" />;
+  }
+
+  return (
+    <Image
+      data-ai-hint="robot learning"
+      src={imageUrl}
+      width="600"
+      height="400"
+      alt="Hero"
+      className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
+      unoptimized
+    />
+  );
+}
+
+
+export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -52,15 +80,7 @@ export default async function LandingPage() {
                   </Button>
                 </div>
               </div>
-              <Image
-                data-ai-hint="robot learning"
-                src={imageUrl}
-                width="600"
-                height="400"
-                alt="Hero"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-                unoptimized
-              />
+              <HeroImage />
             </div>
           </div>
         </section>
