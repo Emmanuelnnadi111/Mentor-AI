@@ -59,6 +59,7 @@ export default async function LandingPage() {
                 height="400"
                 alt="Hero"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
+                unoptimized
               />
             </div>
           </div>
